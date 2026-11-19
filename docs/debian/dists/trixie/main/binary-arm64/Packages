@@ -1,0 +1,18 @@
+Package: cat4igp-client
+Architecture: arm64
+Version: 0.1.0-1
+Priority: optional
+Section: net
+Maintainer: BadAimWeeb <badaimweeb@protonmail.com>
+Installed-Size: 13674
+Depends: libc6 (>= 2.39), libgcc-s1 (>= 4.2), ca-certificates, nftables
+Filename: pool/arm64/cat4igp-client_0.1.0-1_arm64.deb
+Size: 3837120
+MD5sum: 4d0b0af4a091bd0dca158a6076061c33
+SHA1: 6e74f0c4a1ec67103f273dde0232871d71a5443a
+SHA256: eb3b0f231f97896735343aa478cdb2dcc276de15c9c028ae22b586d84478d0f6
+SHA512: 4cb451280894a1513ea90c5307dc59082dce7930ecdd3581ea148f6889a2e4f39af3d2a687db1999f3586c132d0a97e5c1a848758da641917ba38235a45b4532
+Homepage: https://github.com/BadAimWeeb/cat4igp
+Description: WireGuard mesh network client
+ Client daemon and command-line interface for cat4igp mesh networks.
+
