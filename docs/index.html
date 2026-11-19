@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAT4IGP package repository</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font: 1rem/1.6 system-ui, sans-serif; max-width: 48rem; margin: 2rem auto; padding: 0 1rem; }
+    pre { padding: .75rem; border: 1px solid currentColor; overflow: auto; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>CAT4IGP package repository</h1>
+    <p>Signed Linux client packages. Keep your distribution’s existing repositories enabled for dependencies.</p>
+    <p>Before trusting any key, check it against the fingerprints in the <a href="https://github.com/BadAimWeeb/cat4igp#install-the-client">installation guide</a>. Run package manager commands as root.</p>
+
+    <h2>Debian 13 (trixie)</h2>
+    <p>Save the verified <a href="keys/cat4igp.asc">OpenPGP key</a> as <code>/etc/apt/keyrings/cat4igp.asc</code>, readable by APT. Add this line to <code>/etc/apt/sources.list.d/cat4igp.list</code>:</p>
+    <pre><code>deb [signed-by=/etc/apt/keyrings/cat4igp.asc] https://c4i-repo.badaimweeb.me/debian trixie main</code></pre>
+    <pre><code>apt-get update -o APT::Update::Error-Mode=any &amp;&amp; apt-get install cat4igp-client</code></pre>
+
+    <h2>Alpine 3.24</h2>
+    <p>Save the verified <a href="keys/cat4igp-alpine.rsa.pub">Alpine key</a> in <code>/etc/apk/keys/</code> under its original name. Add this line once to <code>/etc/apk/repositories</code>:</p>
+    <pre><code>https://c4i-repo.badaimweeb.me/alpine/v3.24</code></pre>
+    <pre><code>apk update &amp;&amp; apk add cat4igp-client</code></pre>
+
+    <h2>Arch Linux (x86-64)</h2>
+    <p>Import the verified <a href="keys/cat4igp.asc">OpenPGP key</a> with <code>pacman-key --add cat4igp.asc</code>, then locally sign its verified fingerprint with <code>pacman-key --lsign-key</code>. Add this section once to <code>/etc/pacman.conf</code>:</p>
+    <pre><code>[cat4igp]
+SigLevel = Required
+Server = https://c4i-repo.badaimweeb.me/arch/$arch</code></pre>
+    <pre><code>pacman -Syu cat4igp/cat4igp-client</code></pre>
+
+    <h2>OpenWrt 25.12.5</h2>
+    <p>Save the verified <a href="keys/cat4igp-openwrt.pem.pub">OpenWrt key</a> in <code>/etc/apk/keys/</code> under its original name. Put the URL matching your firmware target in <code>/etc/apk/repositories.d/cat4igp.list</code>:</p>
+    <ul>
+      <li>x86/64: <a href="openwrt/25.12.5/x86_64/packages.adb"><code>https://c4i-repo.badaimweeb.me/openwrt/25.12.5/x86_64/packages.adb</code></a></li>
+      <li>armsr/armv8: <a href="openwrt/25.12.5/aarch64_generic/packages.adb"><code>https://c4i-repo.badaimweeb.me/openwrt/25.12.5/aarch64_generic/packages.adb</code></a></li>
+    </ul>
+    <pre><code>apk update &amp;&amp; apk add cat4igp-client</code></pre>
+
+    <h2>Portable Linux binaries</h2>
+    <p>Download v0.1.0 for <a href="portable/v0.1.0/cat4igp-client-0.1.0-x86_64-unknown-linux-musl">x86-64</a> or <a href="portable/v0.1.0/cat4igp-client-0.1.0-aarch64-unknown-linux-musl">ARM64</a>. Verify <a href="portable/v0.1.0/SHA256SUMS">SHA256SUMS</a> against its <a href="portable/v0.1.0/SHA256SUMS.asc">OpenPGP signature</a> using the verified key, then check the checksum of your download before running it.</p>
+
+    <h2>After installation</h2>
+    <p>Packages do not start the daemon automatically. Review <code>/etc/cat4igp/client.toml</code>, start the service, and enroll using a trusted bundle from your operator. See the <a href="https://github.com/BadAimWeeb/cat4igp#install-the-client">installation guide</a>.</p>
+  </main>
+</body>
+</html>
